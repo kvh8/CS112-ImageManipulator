@@ -8,8 +8,8 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-//Your program should prompt the user for an input and output 
-//file as well as the operation that the user would like to perform
+	//Your program should prompt the user for an input and output 
+	//file as well as the operation that the user would like to perform
 
 	ifstream infile;
 	ofstream outfile;
@@ -36,7 +36,8 @@ int main(int argc, char* argv[])
 		<< "4. Negate Red" << endl
 		<< "5. Negate Blue" << endl
 		<< "6. Negate Green" << endl
-		<< "7. Grayscale" << endl;
+		<< "7. Grayscale" << endl
+		<< "*** Choose the number of the effect you want (1 = remove red)" << endl;
 	cin >> choice
 
 
