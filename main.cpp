@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
 		int blue = i + 2;
 		int average = (red + green + blue) / 3;
 
-		for (int j = 0; j < data_vector.size(); j++)
+		for (int j = 0; j < 2; j++)
 		{
 			data_vector[j] = average;
 		}
