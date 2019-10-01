@@ -140,6 +140,19 @@ int main(int argc, char* argv[])
 
 	//Grayscale
 
+	for (int i = 0; i < data_vector.size(); i += 3)
+	{
+		int red = i;
+		int green = i + 1;
+		int blue = i + 2;
+		int average = (red + green + blue) / 3;
+
+		for (int j = 0; j < data_vector.size(); j++)
+		{
+			data_vector[j] = average;
+		}
+	}
+	
 
 	infile.close();
 	
