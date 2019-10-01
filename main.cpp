@@ -116,16 +116,29 @@ int main(int argc, char* argv[])
 
 	//Negate Red
 
-
+	/*for (int i = 0; i < data_vector.size(); i += 3)
+	{
+		data_vector[i] = 255 - data_vector[i];
+	}
+	*/
 
 	//Negate Green
 
-
+	/*for (int i = 1; i < data_vector.size(); i += 3)
+	{
+		data_vector[i] = 255 - data_vector[i];
+	}
+	*/
 
 	//Negate Blue
 
+	/*for (int i = 2; i < data_vector.size(); i += 3)
+	{
+		data_vector[i] = 255 - data_vector[i];
+	}
+	*/
 
-
+	//Grayscale
 
 
 	infile.close();
