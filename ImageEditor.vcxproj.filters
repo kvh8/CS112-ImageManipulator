@@ -44,5 +44,8 @@
     <None Include="samples\tinypix.ppm">
       <Filter>Resource Files\samples</Filter>
     </None>
+    <None Include="bunny2.ppm">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

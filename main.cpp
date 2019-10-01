@@ -92,11 +92,11 @@ int main(int argc, char* argv[])
 
 	//Remove Red
 
-	for (int i = 0; i < data_vector.size(); i += 3)
+	/*for (int i = 0; i < data_vector.size(); i += 3)
 	{
 		data_vector[i] = 0;
 	}
-	
+	*/
 
 	//Remove Green
 

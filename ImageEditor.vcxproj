@@ -126,6 +126,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bunny2.ppm" />
     <None Include="samples\blocks.ppm" />
     <None Include="samples\bunny.ppm" />
     <None Include="samples\bunny2.ppm" />
