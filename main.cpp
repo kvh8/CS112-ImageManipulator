@@ -161,8 +161,8 @@ int main(int argc, char* argv[])
 			data_vector[green] = average;
 			data_vector[blue] = average;
 		}
-	
-		/*
+
+		
 		**Problem with this was it only changed the first three values and never went to next three
 		for (int j = 0; j <= 2; j++)
 		{
