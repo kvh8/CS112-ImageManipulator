@@ -34,38 +34,6 @@ int main(int argc, char* argv[])
 	cout << "Would you like to add an effect to your image? (press 'y' for yes or 'n' for no)" << endl;
 	cin >> choice;
 
-	
-	
-	//For effect chaining, put it in a while loop that asks the user if they want to continue, and uses 
-	//their choice to remain in the loop.
-
-	/*
-		cout << "Would you like to add an effect to your image? (press y for yes or n for no)" << endl;
-		cin >> choice;
-		while(choice == "y")
-		{
-			cout << "Select the image effect you want:" << endl
-		<< "***Image Effects * **" << endl
-		<< "1. Remove Red" << endl
-		<< "2. Remove Blue" << endl
-		<< "3. Remove Green" << endl
-		<< "4. Negate Red" << endl
-		<< "5. Negate Blue" << endl
-		<< "6. Negate Green" << endl
-		<< "7. Grayscale" << endl
-		<< "8. Random Noise" << endl
-		<< "9. High Contrast" << endl
-		<< "*** Choose the number of the effect you want (1 = remove red)" << endl;
-		cin >> choice;
-
-		//Here you will add the switch case for the choices
-
-		//After, add final question
-		cout << "Would you like to add another effect to your image? ((press y for yes or n for no)" << endl;
-		}
-	*/
-
-
 	// Reading the file
 
 	infile.open(in_file_name);
