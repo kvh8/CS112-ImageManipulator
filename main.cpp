@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
 
 	// My while loop for multiple effects
 
-	while (choice == "y")
+	while (choice != "n")
 	{
 		cout << "Select the image effect you want:" << endl
 			<< "***Image Effects * **" << endl
