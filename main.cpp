@@ -16,12 +16,16 @@ int main(int argc, char* argv[])
 	int number_choice;
 	string choice;
 	string line1;
+	int width = 0;
+	int height = 0;
 	string line2;
 	string line3;
 	string line4;
+	string line5;
 	string in_file_name;
 	string out_file_name;
 	vector<int> data_vector;
+	vector<vector<int>> image_vector;
 
 	//User Input/Output/Choice
 
@@ -47,9 +51,13 @@ int main(int argc, char* argv[])
 
 	getline(infile, line1);
 
-	getline(infile, line2);
+	getline(infile, line2, ' ');
+	width = stoi(line2);
 
-	getline(infile, line3);
+	getline(infile, line3, ' ');
+	height = stoi(line3);
+
+	getline(infile, line4);
 
 
 	while (infile.good() == true)
@@ -61,8 +69,8 @@ int main(int argc, char* argv[])
 		*/
 		// The above does the same as below
 
-		getline(infile, line4);
-		istringstream data_row{ line4 };
+		getline(infile, line5);
+		istringstream data_row{ line5 };
 
 		while (data_row.good() == true)
 		{
@@ -194,6 +202,20 @@ int main(int argc, char* argv[])
 			}
 			break;
 
+		case 10:		//Vertical Flip
+			for (int i = 0; i < data_vector.size(); i++)
+			{
+				vector<int> temp;
+				if (i < width)
+				{
+					temp.push_back(data_vector[i]);
+				}
+				image_vector.push_back(temp);
+			}
+
+
+			break;
+
 		default:
 			cout << "Error in choice, Please choose a number between 1 and 9" << endl;
 		}
@@ -203,6 +225,13 @@ int main(int argc, char* argv[])
 	}
 	
 	infile.close();
+
+
+
+
+
+
+
 	
 	//Output file
 
