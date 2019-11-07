@@ -35,8 +35,10 @@ int main(int argc, char* argv[])
 	cout << "Provide the name of the file you would like to write to" << endl;
 	cin >> out_file_name;
 
+	/*
 	cout << "Would you like to add an effect to your image? (press 'y' for yes or 'n' for no)" << endl;
 	cin >> choice;
+	*/
 
 	// Reading the file
 
@@ -86,10 +88,23 @@ int main(int argc, char* argv[])
 		}
 
 	}
+	
+	while (data_vector.empty() != true)
+	{
+		vector<int> temp;
+		for (int j = 0; j < data_vector.size(); j++)
+		{
+			if (j < (width * 3))
+			{
+				temp.push_back(data_vector[j]);
+			}
+		}
+		image_vector.push_back(temp);
+	}
 
 	// My while loop for multiple effects
 
-	while (choice != "n")
+/*	while (choice != "n")
 	{
 		cout << "Select the image effect you want:" << endl
 			<< "***Image Effects * **" << endl
@@ -203,15 +218,7 @@ int main(int argc, char* argv[])
 			break;
 
 		case 10:		//Vertical Flip
-			for (int i = 0; i < data_vector.size(); i++)
-			{
-				vector<int> temp;
-				if (i < width)
-				{
-					temp.push_back(data_vector[i]);
-				}
-				image_vector.push_back(temp);
-			}
+			
 
 
 			break;
@@ -223,7 +230,8 @@ int main(int argc, char* argv[])
 		cout << "Would you like to add another effect to your image? ((press y for yes or n for no)" << endl;
 		cin >> choice;
 	}
-	
+	*/
+
 	infile.close();
 
 
@@ -241,10 +249,24 @@ int main(int argc, char* argv[])
 		<< line2 << endl
 		<< line3 << endl;
 
+	
+	/*
 	for (int i = 0; i < data_vector.size(); i++)
 	{
 		outfile << data_vector[i] << ' ';
 	}
+	*/
+	
+
+	for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0; j < image_vector[i].size(); j++)
+		{
+			outfile << image_vector[i][j] << ' ';
+		}
+	}
+
+
 
 	outfile.close();
 
