@@ -92,15 +92,31 @@ int main(int argc, char* argv[])
 	while (data_vector.empty() != true)
 	{
 		vector<int> temp;
-		for (int j = 0; j < data_vector.size(); j++)
+		for (int i = 0; i < data_vector.size(); i++)
 		{
-			if (j < (width * 3))
+			if (i < (width * 3))
 			{
-				temp.push_back(data_vector[j]);
+				temp.push_back(data_vector[i]);
 			}
 		}
 		image_vector.push_back(temp);
 	}
+
+	//case 10:		//Vertical Flip
+
+	for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0, k = (image_vector[i].size() - 1); j < image_vector[i].size(), k >= 0; j++, k--)
+		{
+			image_vector[i] = image_vector[k];
+			image_vector[k] = image_vector[i];
+		}
+	}
+
+
+
+
+
 
 	// My while loop for multiple effects
 
@@ -258,14 +274,14 @@ int main(int argc, char* argv[])
 	*/
 	
 
-	for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; j < image_vector[i].size(); j++)
 		{
 			outfile << image_vector[i][j] << ' ';
 		}
 	}
-
+	*/
 
 
 	outfile.close();
