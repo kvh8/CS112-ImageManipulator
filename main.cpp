@@ -104,15 +104,15 @@ int main(int argc, char* argv[])
 
 	//case 10:		//Vertical Flip
 
-	for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0; i < image_vector.size(); i++)
 	{
-		for (int j = 0, k = (image_vector[i].size() - 1); j < image_vector[i].size(), k >= 0; j++, k--)
+		for (int j = 0, k = (image_vector[i].size() - 1); j < image_vector[i].size() && k >= 0; j++, k--)
 		{
-			image_vector[i] = image_vector[k];
-			image_vector[k] = image_vector[i];
+			image_vector[i][j] = image_vector[i][k];
+			image_vector[i][k] = image_vector[i][j];
 		}
 	}
-
+	*/
 
 
 
@@ -248,6 +248,8 @@ int main(int argc, char* argv[])
 	}
 	*/
 
+
+
 	infile.close();
 
 
@@ -278,7 +280,7 @@ int main(int argc, char* argv[])
 	{
 		for (int j = 0; j < image_vector[i].size(); j++)
 		{
-			outfile << image_vector[i][j] << ' ';
+			outfile << image_vector[i][j];
 		}
 	}
 	*/
