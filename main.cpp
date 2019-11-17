@@ -55,25 +55,23 @@ int main(int argc, char* argv[])
 	getline(infile, line2, ' ');
 	width = stoi(line2);
 
-	getline(infile, line3, ' ');
+	getline(infile, line3);
 	height = stoi(line3);
 
-	
-
-	
+	getline(infile, line4);
 
 
 	while (infile.good() == true)
 	{
 		
-		/*int value = 0;
+		int value = 0;
 		infile >> value;
 		data_vector.push_back(value);
-		*/
+		
 
 		// The above does the same as below
 
-		getline(infile, line4);
+		/*getline(infile, line4);
 		istringstream data_row{ line4 };
 
 		while (data_row.good() == true)
@@ -87,21 +85,24 @@ int main(int argc, char* argv[])
 				data_vector.push_back(stoi(temp_data));
 			}
 
-		}
+		}*/
 	}
 	
-	while (image_vector.size() != (data_vector.size() / height))
-	{
+	while (image_vector.size() < (data_vector.size() / height))
+	{	
 		vector<int> temp;
-		for (int i = 0; i < data_vector.size(); i++)
+		for (int j = 0; j < data_vector.size(); j++)
 		{
-			if (i < (width * 3))
+			if (temp.size() < (width * 3))
 			{
-				temp.push_back(data_vector[i]);
+					temp.push_back(data_vector[j]);
 			}
 		}
-		image_vector.push_back(temp);
+		image_vector.push_back(temp);	
 	}
+
+	cout << data_vector.size() << endl;
+	cout << image_vector.size();
 
 	//case 10:		//Vertical Flip
 
@@ -115,11 +116,25 @@ int main(int argc, char* argv[])
 	}
 	*/
 
+	// case 11:		Horizontal Flip
+
+	/*for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0, k = (image_vector[i].size() - 1); j < image_vector[i].size(), k >= 0; j++, k--)
+		{
+			image_vector[j] = image_vector[k];
+			image_vector[k] = image_vector[j];
+		}
+	}*/
+
+
+	// Blur
 
 
 
 
-	// My while loop for multiple effects
+
+// My while loop for multiple effects
 
 /*	while (choice != "n")
 	{
@@ -233,13 +248,6 @@ int main(int argc, char* argv[])
 				}
 			}
 			break;
-
-		case 10:		//Vertical Flip
-			
-
-
-			break;
-
 		default:
 			cout << "Error in choice, Please choose a number between 1 and 9" << endl;
 		}
@@ -248,8 +256,6 @@ int main(int argc, char* argv[])
 		cin >> choice;
 	}
 	*/
-
-
 
 	infile.close();
 
@@ -265,26 +271,27 @@ int main(int argc, char* argv[])
 	outfile.open(out_file_name);
 
 	outfile << line1 << endl
-		<< line2 << ' ' 
-		<< line3 << endl;
+		<< line2 << endl
+		<< line3 << endl
+		<< line4 << endl;
 
 	
 	
-	for (int i = 0; i < data_vector.size(); i++)
+	/*for (int i = 0; i < data_vector.size(); i++)
 	{
 		outfile << data_vector[i] << ' ';
-	}
+	}*/
 	
 	
 
-	/*for (int i = 0; i < image_vector.size(); i++)
+	for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; j < image_vector[i].size(); j++)
 		{
 			outfile << image_vector[i][j] << ' ';
 		}
 		outfile << endl;
-	}*/
+	}
 	
 
 
