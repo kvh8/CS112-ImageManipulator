@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 
 	ifstream infile;
 	ofstream outfile;
-	int number_choice;
+	//int number_choice;
 	string choice;
 	string line1;
 	int width = 0;
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
 	}
 	
-	while (data_vector.empty() != true)
+	while (data_vector.empty() == true)
 	{
 		vector<int> temp;
 		for (int i = 0; i < data_vector.size(); i++)
@@ -265,7 +265,8 @@ int main(int argc, char* argv[])
 
 	outfile << line1 << endl
 		<< line2 << endl
-		<< line3 << endl;
+		<< line3 << endl
+		<< line4 << endl;
 
 	
 	/*
@@ -276,14 +277,15 @@ int main(int argc, char* argv[])
 	*/
 	
 
-	/*for (int i = 0; i < image_vector.size(); i++)
+	for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; j < image_vector[i].size(); j++)
 		{
 			outfile << image_vector[i][j];
 		}
+		outfile << endl;
 	}
-	*/
+	
 
 
 	outfile.close();
