@@ -21,7 +21,6 @@ int main(int argc, char* argv[])
 	string line2;
 	string line3;
 	string line4;
-	string line5;
 	string in_file_name;
 	string out_file_name;
 	vector<int> data_vector;
@@ -59,20 +58,23 @@ int main(int argc, char* argv[])
 	getline(infile, line3, ' ');
 	height = stoi(line3);
 
-	getline(infile, line4);
+	
+
+	
 
 
 	while (infile.good() == true)
 	{
-		/*
-		int value = 0;
+		
+		/*int value = 0;
 		infile >> value;
 		data_vector.push_back(value);
 		*/
+
 		// The above does the same as below
 
-		getline(infile, line5);
-		istringstream data_row{ line5 };
+		getline(infile, line4);
+		istringstream data_row{ line4 };
 
 		while (data_row.good() == true)
 		{
@@ -86,10 +88,9 @@ int main(int argc, char* argv[])
 			}
 
 		}
-
 	}
 	
-	while (data_vector.empty() == true)
+	while (image_vector.size() != (data_vector.size() / height))
 	{
 		vector<int> temp;
 		for (int i = 0; i < data_vector.size(); i++)
@@ -264,27 +265,26 @@ int main(int argc, char* argv[])
 	outfile.open(out_file_name);
 
 	outfile << line1 << endl
-		<< line2 << endl
-		<< line3 << endl
-		<< line4 << endl;
+		<< line2 << ' ' 
+		<< line3 << endl;
 
 	
-	/*
+	
 	for (int i = 0; i < data_vector.size(); i++)
 	{
 		outfile << data_vector[i] << ' ';
 	}
-	*/
+	
 	
 
-	for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; j < image_vector[i].size(); j++)
 		{
-			outfile << image_vector[i][j];
+			outfile << image_vector[i][j] << ' ';
 		}
 		outfile << endl;
-	}
+	}*/
 	
 
 
