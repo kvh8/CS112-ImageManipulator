@@ -41,14 +41,14 @@
     <None Include="samples\squares.ppm">
       <Filter>Resource Files\samples</Filter>
     </None>
-    <None Include="samples\tinypix.ppm">
-      <Filter>Resource Files\samples</Filter>
-    </None>
     <None Include="bunny2.ppm">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="bunny.ppm">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="samples\tinypix.ppm">
+      <Filter>Resource Files\samples</Filter>
     </None>
   </ItemGroup>
 </Project>

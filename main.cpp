@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
 	cout << "Provide the name of the file you would like to write to" << endl;
 	cin >> out_file_name;
 
+	//choice cout/cin
 	/*
 	cout << "Would you like to add an effect to your image? (press 'y' for yes or 'n' for no)" << endl;
 	cin >> choice;
@@ -66,11 +67,9 @@ int main(int argc, char* argv[])
 		
 		int value = 0;
 		infile >> value;
-		data_vector.push_back(value);
+		data_vector.push_back(value); 
 		
-
 		// The above does the same as below
-
 		/*getline(infile, line4);
 		istringstream data_row{ line4 };
 
@@ -88,20 +87,27 @@ int main(int argc, char* argv[])
 		}*/
 	}
 	
-	while (image_vector.size() < (data_vector.size() / height))
+	while (image_vector.size() < (height))
 	{	
 		vector<int> temp;
-		for (int i = 0, j = 0; i < data_vector.size() && j < (width * 3); i++, j++)
+		for (int i = 0; i < data_vector.size(); i++)
 		{		
-			temp.push_back(data_vector[i]);
+			if (temp.size() < (width * 3))
+			{
+				temp.push_back(data_vector[i]);
+			}
+			else
+			{
+				image_vector.push_back(temp);
+				temp.clear();
+				temp.push_back(data_vector[i]);
+			}
 		}
-		image_vector.push_back(temp);
+		
 	}
 
-	cout << data_vector.size() << endl;
-	cout << image_vector.size();
 
-	// Vertical Flip
+	// Mirror
 
 	/*for (int i = 0; i < image_vector.size(); i++)
 	{
@@ -110,20 +116,29 @@ int main(int argc, char* argv[])
 			image_vector[i][j] = image_vector[i][k];
 			image_vector[i][k] = image_vector[i][j];
 		}
+	}*/
+	
+	// Vertical Flip
+	// changes the color slightly
+	//switch r,g,b at once not just one num
+	for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0, k = (image_vector[i].size() - 1); j < (image_vector[i].size() / 2) && k >= (image_vector[i].size() / 2); j++, k--)
+		{
+			int back = image_vector[i][k];
+			int front = image_vector[i][j];
+
+			image_vector[i][j] = back;
+			image_vector[i][k] = front;
+		}
 	}
-	*/
 
 	// Horizontal Flip
 
-	/*for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0, j = (image_vector[i].size() - 1); i < image_vector.size() && j >= 0; i++, j--)
 	{
-		for (int j = 0, k = (image_vector[i].size() - 1); j < image_vector[i].size(), k >= 0; j++, k--)
-		{
-			image_vector[j] = image_vector[k];
-			image_vector[k] = image_vector[j];
-		}
+			image_vector[i].swap(image_vector[j]);
 	}*/
-
 
 	// Blur
 	/*
@@ -138,10 +153,10 @@ int main(int argc, char* argv[])
 
 	/*for (int i = 0; i < image_vector.size(); i++)
 	{
-		for (int j = 0; j < image_vector[i].size(); j++)
+		for (int j = 0; j < image_vector[i].size(); j+= 3)
 		{
-			int neighbor_r = j + 1;
-			int neighbor_l = j - 1;
+			int neighbor_r = j + 3;
+			int neighbor_l = j - 3;
 			int neighbor_d = i + 1;
 			int neighbor_u = i - 1;
 
@@ -181,16 +196,17 @@ int main(int argc, char* argv[])
 	*/
 	//Ask if pixel is rgb or if can count individual count
 	
-	for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; i < image_vector[i].size(); j+= 3)
 		{
 			int right = j + 1;
-			int left = j - 1;
+			int right1 = j + 2;
+			int right2 = j + 3;
 			int below = i + 1;
-			int above = i - 1;
 
 			//reference pixel is j = 0
+			//distance is three
 
 			//image_vector[i][j] = 
 
@@ -201,9 +217,15 @@ int main(int argc, char* argv[])
 
 
 		}
-	}
+	}*/
 
+	// Rotate 90 degrees
 
+	/*
+		This one is probably the most conceptually difficult. Essentially, you will need to turn the first row 
+		into the last column, the 2nd row into the 2nd to last column, etc. until you turn the last row into the 
+		first column. Remember to also change your image's dimensions (2nd line in PPM file)!
+	*/
 
 // My while loop for multiple effects
 
