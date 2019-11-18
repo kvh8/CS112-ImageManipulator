@@ -91,20 +91,17 @@ int main(int argc, char* argv[])
 	while (image_vector.size() < (data_vector.size() / height))
 	{	
 		vector<int> temp;
-		for (int j = 0; j < data_vector.size(); j++)
-		{
-			if (temp.size() < (width * 3))
-			{
-					temp.push_back(data_vector[j]);
-			}
+		for (int i = 0, j = 0; i < data_vector.size() && j < (width * 3); i++, j++)
+		{		
+			temp.push_back(data_vector[i]);
 		}
-		image_vector.push_back(temp);	
+		image_vector.push_back(temp);
 	}
 
 	cout << data_vector.size() << endl;
 	cout << image_vector.size();
 
-	//case 10:		//Vertical Flip
+	// Vertical Flip
 
 	/*for (int i = 0; i < image_vector.size(); i++)
 	{
@@ -116,7 +113,7 @@ int main(int argc, char* argv[])
 	}
 	*/
 
-	// case 11:		Horizontal Flip
+	// Horizontal Flip
 
 	/*for (int i = 0; i < image_vector.size(); i++)
 	{
@@ -129,8 +126,82 @@ int main(int argc, char* argv[])
 
 
 	// Blur
+	/*
+	For each pixel in a given row, set the pixel's red value to the average of itself and its horizontally adjacent neighbors 
+	(i.e. i + 1, i - 1). For border cases, just take the average of the singular neighbor.
+			a. Do the same procedure for the pixel's green and blue values
+	For each pixel in a given column, set the pixel's red value to be the average of itself and its vertically adjacent neighbors 
+	(i.e. j + 1, j - 1). For border cases, just take the average of the singular neighbor. 
+			a. Do the same procedure for the pixel's green and blue values. Do this 10 times to get an extreme blur like the 
+			one depicted in my image.
+	*/
+
+	/*for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0; j < image_vector[i].size(); j++)
+		{
+			int neighbor_r = j + 1;
+			int neighbor_l = j - 1;
+			int neighbor_d = i + 1;
+			int neighbor_u = i - 1;
+
+			if (neighbor_l < 0)
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r]) / 2;
+			}
+			else if (neighbor_r > image_vector[i].size())
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r]) / 2;
+			}
+			else
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r] + image_vector[i][neighbor_r]) / 3;
+			}
+
+			if (neighbor_u < 0)
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[neighbor_d][j]) / 2;
+			}
+			else if (neighbor_d > image_vector.size())
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[neighbor_u][j]) / 2;
+			}
+			else
+			{
+				image_vector[i][j] = (image_vector[i][j] + image_vector[neighbor_d][j] + image_vector[neighbor_u][j]) / 3;
+			}
+		}
+	}*/
+
+	// Pixlate
+	/*
+	To pixelate an image, take a reference pixel P and a distance D and make all pixels adjacent to P 
+	in a DxD block the same as P. Then, skip over D pixels and repeat the process for a new P. 
+	For example, given a D of 2, here is how we would pixelate the following matrix:
+	*/
+	//Ask if pixel is rgb or if can count individual count
+	
+	for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0; i < image_vector[i].size(); j+= 3)
+		{
+			int right = j + 1;
+			int left = j - 1;
+			int below = i + 1;
+			int above = i - 1;
+
+			//reference pixel is j = 0
+
+			//image_vector[i][j] = 
 
 
+
+
+
+
+
+		}
+	}
 
 
 
