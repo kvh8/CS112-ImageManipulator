@@ -142,21 +142,33 @@ int main(int argc, char* argv[])
 
 	// Horizontal Flip
 
-	for (int i = 0; i < image_vector.size() - 1; i++)
+	for (int i = 0; i < image_vector.size(); i++)
 	{
-		for (int j = 0; j < (image_vector[i].size() - 1) / 2; j++)
-		{
-			int top = image_vector[i][j];
-			int bottom = image_vector[i][image_vector[i].size() - 1 - j];
+		for (int j = (image_vector.size() - 1), k = 0; j >= (image_vector.size()) && k < (image_vector[i].size() / 2); j--, k += 3)
+		{	
+			int top_red = image_vector[i][k];
+			int top_green = image_vector[i][k + 1];
+			int top_blue = image_vector[i][k + 2];
+			int bottom_red = image_vector[j][k];
+			int bottom_green = image_vector[j][k + 1];
+			int bottom_blue = image_vector[j][k + 2];
 
-			image_vector[i][j] = bottom;
-			image_vector[i][image_vector[i].size() - 1 - j] = top;
+			image_vector[i][k] = bottom_red;
+			image_vector[i][k + 1] = bottom_green;
+			image_vector[i][k + 2] = bottom_blue;
+			image_vector[j][k] = top_red;
+			image_vector[j][k + 1] = top_green;
+			image_vector[j][k + 2] = top_blue;
 
 
+			/*int top = image_vector[j][i];
+			int bottom = image_vector[image_vector[j].size() - 1 - i][i];
+
+			image_vector[j][i] = bottom;
+			image_vector[image_vector[j].size() - 1 - i][i] = top;
 
 
-
-			/*for (int k = 0; k < image_vector[i].size(); k++)
+			for (int k = 0; k < image_vector[i].size(); k++)
 			{
 				int top = image_vector[i][k];
 				int bottom = image_vector[j][k];
@@ -164,8 +176,10 @@ int main(int argc, char* argv[])
 				image_vector[i][k] = bottom;
 				image_vector[j][k] = top;
 			}*/
+
 		}
 	}
+
 
 	// Blur
 	/*
@@ -177,7 +191,6 @@ int main(int argc, char* argv[])
 			a. Do the same procedure for the pixel's green and blue values. Do this 10 times to get an extreme blur like the 
 			one depicted in my image.
 	*/
-
 	/*for (int i = 0; i < image_vector.size(); i++)
 	{
 		for (int j = 0; j < image_vector[i].size(); j+= 3)
@@ -191,7 +204,7 @@ int main(int argc, char* argv[])
 			{
 				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r]) / 2;
 			}
-			else if (neighbor_r > image_vector[i].size())
+			else if (neighbor_r > image_vector[i].size() - 1)
 			{
 				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_l]) / 2;
 			}
@@ -204,7 +217,7 @@ int main(int argc, char* argv[])
 			{
 				image_vector[i][j] = (image_vector[i][j] + image_vector[neighbor_d][j]) / 2;
 			}
-			else if (neighbor_d > image_vector.size())
+			else if (neighbor_d > image_vector.size() - 1)
 			{
 				image_vector[i][j] = (image_vector[i][j] + image_vector[neighbor_u][j]) / 2;
 			}
@@ -221,8 +234,6 @@ int main(int argc, char* argv[])
 	in a DxD block the same as P. Then, skip over D pixels and repeat the process for a new P. 
 	For example, given a D of 2, here is how we would pixelate the following matrix:
 	*/
-	//Ask if pixel is rgb or if can count individual count
-	
 	/*for (int i = 0; i < image_vector.size(); i+= 3)
 	{
 		for (int j = 0; i < image_vector[i].size(); j+= 3)
