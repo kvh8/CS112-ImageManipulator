@@ -119,26 +119,53 @@ int main(int argc, char* argv[])
 	}*/
 	
 	// Vertical Flip
-	// changes the color slightly
-	//switch r,g,b at once not just one num
-	for (int i = 0; i < image_vector.size(); i++)
-	{
-		for (int j = 0, k = (image_vector[i].size() - 1); j < (image_vector[i].size() / 2) && k >= (image_vector[i].size() / 2); j++, k--)
-		{
-			int back = image_vector[i][k];
-			int front = image_vector[i][j];
 
-			image_vector[i][j] = back;
-			image_vector[i][k] = front;
+	/*for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0, k = (image_vector[i].size() - 1); j < (image_vector[i].size() / 2) && k >= (image_vector[i].size() / 2); j+= 3, k-= 3)
+		{
+			int back_blue = image_vector[i][k];
+			int back_green = image_vector[i][k - 1];
+			int back_red = image_vector[i][k - 2];
+			int front_red = image_vector[i][j];
+			int front_green = image_vector[i][j + 1];
+			int front_blue = image_vector[i][j + 2];
+
+			image_vector[i][j] = back_red;
+			image_vector[i][j + 1] = back_green;
+			image_vector[i][j + 2] = back_blue;
+			image_vector[i][k] = front_blue;
+			image_vector[i][k - 1] = front_green;
+			image_vector[i][k - 2] = front_red;
 		}
-	}
+	}*/
 
 	// Horizontal Flip
 
-	/*for (int i = 0, j = (image_vector[i].size() - 1); i < image_vector.size() && j >= 0; i++, j--)
+	for (int i = 0; i < image_vector.size() - 1; i++)
 	{
-			image_vector[i].swap(image_vector[j]);
-	}*/
+		for (int j = 0; j < (image_vector[i].size() - 1) / 2; j++)
+		{
+			int top = image_vector[i][j];
+			int bottom = image_vector[i][image_vector[i].size() - 1 - j];
+
+			image_vector[i][j] = bottom;
+			image_vector[i][image_vector[i].size() - 1 - j] = top;
+
+
+
+
+
+			/*for (int k = 0; k < image_vector[i].size(); k++)
+			{
+				int top = image_vector[i][k];
+				int bottom = image_vector[j][k];
+
+				image_vector[i][k] = bottom;
+				image_vector[j][k] = top;
+			}*/
+		}
+	}
 
 	// Blur
 	/*
@@ -166,11 +193,11 @@ int main(int argc, char* argv[])
 			}
 			else if (neighbor_r > image_vector[i].size())
 			{
-				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r]) / 2;
+				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_l]) / 2;
 			}
 			else
 			{
-				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_r] + image_vector[i][neighbor_r]) / 3;
+				image_vector[i][j] = (image_vector[i][j] + image_vector[i][neighbor_l] + image_vector[i][neighbor_r]) / 3;
 			}
 
 			if (neighbor_u < 0)
@@ -196,25 +223,36 @@ int main(int argc, char* argv[])
 	*/
 	//Ask if pixel is rgb or if can count individual count
 	
-	/*for (int i = 0; i < image_vector.size(); i++)
+	/*for (int i = 0; i < image_vector.size(); i+= 3)
 	{
 		for (int j = 0; i < image_vector[i].size(); j+= 3)
 		{
 			int right = j + 1;
 			int right1 = j + 2;
-			int right2 = j + 3;
 			int below = i + 1;
+			int below1 = i + 2;
 
 			//reference pixel is j = 0
 			//distance is three
 
-			//image_vector[i][j] = 
+			int red = image_vector[i][j];
+			int red2 = image_vector[below][j];
+			int red3 = image_vector[below1][j];
+			int green = image_vector[i][right];
+			int green1 = image_vector[below][right];
+			int green2 = image_vector[below1][right];
+			int blue = image_vector[i][right1];
+			int blue1 = image_vector[below][right1];
+			int blue2 = image_vector[below1][right1];
 
-
-
-
-
-
+			image_vector[below][j] = red;
+			image_vector[below1][j] = red;
+			image_vector[i][right] = red;
+			image_vector[below][right] = red;
+			image_vector[below1][right];
+			image_vector[i][right1] = red;
+			image_vector[below][right1] = red;
+			image_vector[below1][right1] = red;
 
 		}
 	}*/
@@ -226,6 +264,12 @@ int main(int argc, char* argv[])
 		into the last column, the 2nd row into the 2nd to last column, etc. until you turn the last row into the 
 		first column. Remember to also change your image's dimensions (2nd line in PPM file)!
 	*/
+
+		//switch height and width
+		/*int temp = height;
+		height = width;
+		width = height;*/
+
 
 // My while loop for multiple effects
 
