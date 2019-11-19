@@ -144,7 +144,11 @@ int main(int argc, char* argv[])
 
 	for (int i = 0; i < image_vector.size(); i++)
 	{
-		for (int j = (image_vector.size() - 1), k = 0; j >= (image_vector.size()) && k < (image_vector[i].size() / 2); j--, k += 3)
+		/*int rows = image_vector.size();
+		int cols = image_vector[i].size();
+		*/
+
+		for (int j = (image_vector.size() - 1), k = 0; j >= (image_vector.size()) && k < (image_vector[i].size()); j--, k += 3)
 		{	
 			int top_red = image_vector[i][k];
 			int top_green = image_vector[i][k + 1];
@@ -280,6 +284,32 @@ int main(int argc, char* argv[])
 		/*int temp = height;
 		height = width;
 		width = height;*/
+
+	// First row becomes last column
+	// Last row becomes first column
+	// First column becomes first row
+	// Last column becomes last row
+
+	/*for (int i = 0; i < image_vector.size(); i++)
+	{
+		for (int j = 0; j < image_vector[i].size(); j++)
+		{
+			for (int k = image_vector[i].size() - 1; k >= image_vector[i].size() / 2; k--)
+			{
+				vector<int> first_row;
+				vector<int> last_row;
+
+				first_row.push_back(image_vector[i][j]);
+				last_row.push_back(image_vector[k][j]);
+			}
+		}
+	}*/
+
+	// I am thinking of it as a spiral almost. Move along the outside while switching the numbers and then
+	// have it shrink by one until it come to half the width/height. but make it the new width/height
+
+
+
 
 
 // My while loop for multiple effects
