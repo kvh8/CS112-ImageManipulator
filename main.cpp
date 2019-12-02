@@ -64,11 +64,11 @@ int main(int argc, char* argv[])
 
 	while (infile.good() == true)
 	{
-		
+
 		int value = 0;
 		infile >> value;
-		data_vector.push_back(value); 
-		
+		data_vector.push_back(value);
+
 		// The above does the same as below
 		/*getline(infile, line4);
 		istringstream data_row{ line4 };
@@ -86,12 +86,12 @@ int main(int argc, char* argv[])
 
 		}*/
 	}
-	
+
 	while (image_vector.size() < (height))
-	{	
+	{
 		vector<int> temp;
 		for (int i = 0; i < data_vector.size(); i++)
-		{		
+		{
 			if (temp.size() < (width * 3))
 			{
 				temp.push_back(data_vector[i]);
@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
 				temp.push_back(data_vector[i]);
 			}
 		}
-		
+
 	}
 
 
@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 			image_vector[i][k] = image_vector[i][j];
 		}
 	}*/
-	
+
 	// Vertical Flip
 
 	/*for (int i = 0; i < image_vector.size(); i++)
@@ -142,48 +142,48 @@ int main(int argc, char* argv[])
 
 	// Horizontal Flip
 
-	for (int i = 0; i < image_vector.size(); i++)
-	{
-		/*int rows = image_vector.size();
-		int cols = image_vector[i].size();
-		*/
+	//for (int i = 0; i < image_vector.size(); i++)
+	//{
+	//	/*int rows = image_vector.size();
+	//	int cols = image_vector[i].size();
+	//	*/
 
-		for (int j = (image_vector.size() - 1), k = 0; j >= (image_vector.size()) && k < (image_vector[i].size()); j--, k += 3)
-		{	
-			int top_red = image_vector[i][k];
-			int top_green = image_vector[i][k + 1];
-			int top_blue = image_vector[i][k + 2];
-			int bottom_red = image_vector[j][k];
-			int bottom_green = image_vector[j][k + 1];
-			int bottom_blue = image_vector[j][k + 2];
+	//	for (int j = (image_vector.size() - 1), k = 0; j >= (image_vector.size()) && k < (image_vector[i].size()); j--, k += 3)
+	//	{	
+	//		int top_red = image_vector[i][k];
+	//		int top_green = image_vector[i][k + 1];
+	//		int top_blue = image_vector[i][k + 2];
+	//		int bottom_red = image_vector[j][k];
+	//		int bottom_green = image_vector[j][k + 1];
+	//		int bottom_blue = image_vector[j][k + 2];
 
-			image_vector[i][k] = bottom_red;
-			image_vector[i][k + 1] = bottom_green;
-			image_vector[i][k + 2] = bottom_blue;
-			image_vector[j][k] = top_red;
-			image_vector[j][k + 1] = top_green;
-			image_vector[j][k + 2] = top_blue;
-
-
-			/*int top = image_vector[j][i];
-			int bottom = image_vector[image_vector[j].size() - 1 - i][i];
-
-			image_vector[j][i] = bottom;
-			image_vector[image_vector[j].size() - 1 - i][i] = top;
+	//		image_vector[i][k] = bottom_red;
+	//		image_vector[i][k + 1] = bottom_green;
+	//		image_vector[i][k + 2] = bottom_blue;
+	//		image_vector[j][k] = top_red;
+	//		image_vector[j][k + 1] = top_green;
+	//		image_vector[j][k + 2] = top_blue;
 
 
-			for (int k = 0; k < image_vector[i].size(); k++)
-			{
-				int top = image_vector[i][k];
-				int bottom = image_vector[j][k];
+	//		/*int top = image_vector[j][i];
+	//		int bottom = image_vector[image_vector[j].size() - 1 - i][i];
 
-				image_vector[i][k] = bottom;
-				image_vector[j][k] = top;
-			}*/
+	//		image_vector[j][i] = bottom;
+	//		image_vector[image_vector[j].size() - 1 - i][i] = top;
 
-		}
-	}
 
+	//		for (int k = 0; k < image_vector[i].size(); k++)
+	//		{
+	//			int top = image_vector[i][k];
+	//			int bottom = image_vector[j][k];
+
+	//			image_vector[i][k] = bottom;
+	//			image_vector[j][k] = top;
+	//		}*/
+
+	//	}
+	//}
+	
 
 	// Blur
 	/*
